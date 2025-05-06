@@ -9,21 +9,20 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 
 @SpringBootTest
-public class DollarCalculatorTest {
+public class CalculatorTest {
 
   @MockBean
   private MarketApi marketApi;
 
   @Autowired
-  private DollarCalculator dollarCalculator;
+  private Calculator calculator;
 
   @Test
-  public void dollarCalculatorTest() {
+  public void calculatorTest() {
     Mockito.when(marketApi.connect()).thenReturn(3000);
-    dollarCalculator.init();
 
-    int sum = dollarCalculator.plus(10, 10);
-    int minus = dollarCalculator.minus(10, 10);
+    int sum = calculator.plus(10, 10);
+    int minus = calculator.minus(10, 10);
     Assertions.assertEquals(60000, sum);
     Assertions.assertEquals(0, minus);
   }
